@@ -10,6 +10,10 @@ class Foo {
 	private $private = 'private';
 	protected $protectedUndefined;
 
+	public function setProtected($newValue) {
+		$this->protected = $newValue;
+	}
+
 	public function getProtected() {
 		return $this->protected;
 	}

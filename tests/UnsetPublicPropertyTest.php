@@ -9,7 +9,7 @@ test('Unsetting public properties in Foo', function () {
 
 	expect($foo->getPublic())->toBe('public');
 	unset($foo->public);
-	expect($foo->public)->toBe(null);
+	expect($foo->public)->toBeNull();
 	$foo->public = 'public';
 	expect($foo->getPublic())->toBe('public');
 });
@@ -19,7 +19,7 @@ test('Unsetting public properties in FooChild', function () {
 
 	expect($foo->getPublic())->toBe('public');
 	unset($foo->public);
-	expect($foo->public)->toBe(null);
+	expect($foo->public)->toBeNull();
 	$foo->public = 'public';
 	expect($foo->getPublic())->toBe('public');
 });
@@ -29,7 +29,7 @@ test('Unsetting public properties in FooGrandchild', function () {
 
 	expect($foo->getPublic())->toBe('public');
 	unset($foo->public);
-	expect($foo->public)->toBe(null);
+	expect($foo->public)->toBeNull();
 	$foo->public = 'public';
 	expect($foo->getPublic())->toBe('public');
 });
