@@ -18,6 +18,9 @@ test('FooChild data is correct', function () {
 	expect($foo->getPrivate())->toBe('private');
 	expect($foo->getProtected())->toBe('protected');
 	expect($foo->getPublic())->toBe('public');
+	expect($foo->getChildPrivate())->toBe('childPrivate');
+	expect($foo->getChildProtected())->toBe('childProtected');
+	expect($foo->getChildPublic())->toBe('childPublic');
 });
 
 test('FooGrandchild data is correct', function () {
@@ -26,4 +29,10 @@ test('FooGrandchild data is correct', function () {
 	expect($foo->getPrivate())->toBe('private');
 	expect($foo->getProtected())->toBe('protected');
 	expect($foo->getPublic())->toBe('public');
+	expect($foo->getChildPrivate())->toBe('childPrivate');
+	expect($foo->getChildProtected())->toBe('childProtected');
+	expect($foo->getChildPublic())->toBe('childPublic');
+	expect($foo->getGrandchildPrivate())->toBe('grandchildPrivate');
+	expect($foo->getGrandchildProtected())->toBe('grandchildProtected');
+	expect($foo->getGrandchildPublic())->toBe('grandchildPublic');
 });
