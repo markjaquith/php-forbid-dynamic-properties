@@ -1,0 +1,22 @@
+{
+    "name": "markjaquith/php-forbid-dynamic-properties",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mark Jaquith",
+            "email": "mark@jaquith.me"
+        }
+    ],
+    "require-dev": {
+        "pestphp/pest": "^1.21"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
