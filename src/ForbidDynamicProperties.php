@@ -39,7 +39,7 @@ trait ForbidDynamicProperties {
 		}
 	}
 
-	protected function _propertyCanBeAccessed($name): bool {
+	private function _propertyCanBeAccessed($name): bool {
 		if ($this->_isPublicProperty($name)) {
 			return true;
 		}
@@ -58,7 +58,7 @@ trait ForbidDynamicProperties {
 		return is_a(static::class, $class, true);
 	}
 
-	protected function _isPublicProperty(string $name): bool {
+	private function _isPublicProperty(string $name): bool {
 		$reflection = new \ReflectionClass($this);
 		$publicProperties = $reflection->getProperties(\ReflectionProperty::IS_PUBLIC);
 		$publicProperties = array_map(fn ($p) => $p->getName(), $publicProperties);
