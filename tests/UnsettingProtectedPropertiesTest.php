@@ -1,11 +1,25 @@
 <?php
 
 use App\Foo;
+use App\FooChild;
+use App\FooGrandchild;
 
-class UnsettableFoo extends Foo {
+trait UnsetsProtected {
 	public function unsetProtected() {
 		unset($this->protected);
 	}
+}
+
+class UnsettableFoo extends Foo {
+	use UnsetsProtected;
+}
+
+class UnsettableChildFoo extends FooChild {
+	use UnsetsProtected;
+}
+
+class UnsettableGrandchildFoo extends FooGrandchild {
+	use UnsetsProtected;
 }
 
 test('UnsettableFoo extends Foo', function () {
@@ -28,10 +42,12 @@ test('Unsetting protected property does not allow it to be publicly set', functi
 	expect($foo->getProtected())->toBeNull();
 });
 
-test('Unsetting protected property still allows it to be set from within', function () {
-	$foo = new UnsettableFoo;
-
+test('Unsetting protected property still allows it to be set from within', function ($foo) {
 	$foo->unsetProtected();
 	$foo->setProtected('overridden');
 	expect($foo->getProtected())->toBe('overridden');
-});
+})->with([
+	'Foo' => new UnsettableFoo,
+	'FooChild' => new UnsettableChildFoo,
+	'FooGrandchild' => new UnsettableGrandchildFoo,
+]);
