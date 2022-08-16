@@ -18,6 +18,10 @@ class Foo {
 		return $this->protected;
 	}
 
+	public function unsetProtected() {
+		unset($this->protected);
+	}
+
 	public function getProtectedUndefined() {
 		return $this->protectedUndefined;
 	}
