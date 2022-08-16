@@ -39,16 +39,23 @@ trait ForbidDynamicProperties {
 		}
 	}
 
-	protected function _wasCalledFromInside(): bool {
-		$backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 4);
+	protected function _propertyCanBeAccessed($name): bool {
+		if ($this->_isPublicProperty($name)) {
+			return true;
+		}
 
-		$class = $backtrace[3]['class'];
+		$backtraceNumber = 3;
+		$backtraceIndex = $backtraceNumber - 1;
+		
+		$backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $backtraceNumber);
+
+		if (!isset($backtrace[$backtraceIndex]) || !isset($backtrace[$backtraceIndex]['class'])) {
+			return false;
+		}
+
+		$class = $backtrace[$backtraceIndex]['class'];
 
 		return is_a(static::class, $class, true);
-	}
-
-	protected function _propertyCanBeAccessed($name): bool {
-		return $this->_isPublicProperty($name) || $this->_wasCalledFromInside();
 	}
 
 	protected function _isPublicProperty(string $name): bool {
