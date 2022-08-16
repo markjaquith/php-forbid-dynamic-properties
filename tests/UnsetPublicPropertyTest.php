@@ -1,6 +1,6 @@
 <?php
 
-test('Unsetting public properties in Foo', function ($foo) {
+test('Unsetting public property in Foo', function ($foo) {
 	expect($foo->getPublic())->toBe('public');
 	unset($foo->public);
 	expect($foo->public)->toBeNull();
