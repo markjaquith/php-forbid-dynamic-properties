@@ -8,6 +8,10 @@ class UnsettableFoo extends Foo {
 	}
 }
 
+test('UnsettableFoo extends Foo', function () {
+	expect(is_a(UnsettableFoo::class, Foo::class, true))->toBe(true);
+});
+
 test('Unsetting protected property makes it return null', function () {
 	$foo = new UnsettableFoo;
 
