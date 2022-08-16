@@ -8,7 +8,6 @@ class Foo {
 	public $public = 'public';
 	protected $protected = 'protected';
 	private $private = 'private';
-	protected $protectedUndefined;
 
 	public function setProtected($newValue) {
 		$this->protected = $newValue;
@@ -20,10 +19,6 @@ class Foo {
 
 	public function unsetProtected() {
 		unset($this->protected);
-	}
-
-	public function getProtectedUndefined() {
-		return $this->protectedUndefined;
 	}
 
 	public function getPrivate() {
